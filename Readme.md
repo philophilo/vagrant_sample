@@ -261,6 +261,23 @@
  A folder titled html_coverage_report will be generated. Open it and copy the path  of index.html and paste it in your browser.
  ```
 
+#### Set up without vagrant
+Change to the vagrant directory 
+```
+cd vagrant
+```
+setup the database VM
+
+```
+vagrant up db
+```
+
+setup the application VM
+
+```
+vagrant up dev
+```
+
 ## Built with
 - Python version  3
 - Flask
@@ -275,4 +292,4 @@ When contributing to this repository, please first discuss the change you wish t
 - A contributor shall identify a task to be done from the [pivotal tracker](https://www.pivotaltracker.com/n/projects/2154921).If there is a bug , feature or chore that has not be included among the tasks, the contributor can add it only after consulting the owner of this repository and the task being accepted.
 - The Contributor shall then create a branch off  the ` develop` branch where they are expected to undertake the task they have chosen.
 - After  undertaking the task, a fully detailed pull request shall be submitted to the owners of this repository for review.
-- If there any changes requested ,it is expected that these changes shall be effected and the pull request resubmitted for review.Once all the changes are accepted, the pull request shall be closed and the changes merged into `develop` by the owners of this repository.
+- If there any changes requested ,it is expected that these changes shall be effected and the pull request resubmitted for review.Once all the changes are accepted, the pull request shall be closed and the changes merged into `develop` by the owners of this repository.# New Document
