@@ -1,0 +1,27 @@
+# _*_ mode: ruby _*_
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    
+    # defining dev, will inherite all from config
+    config.vm.define "dev" do |dev_api|
+      dev_api.vm.synced_folder "../", "/app", type: "rsync"
+      dev_api.vm.provision "shell", path: "provision.sh"
+      dev_api.vm.box = "ubuntu/xenial64"
+      dev_api.vm.hostname = "api"
+      #dev_api.vm.network "forwarded_port", guest: 8000, host: 8000
+      dev_api.vm.network "private_network", ip: "192.168.33.10"
+    end
+
+    config.vm.define "db" do |dev_db|
+      dev_db.vm.box = "ubuntu/xenial64"
+      dev_db.vm.host_name = "postgresql"
+      dev_db.vm.synced_folder "bootstrap", "/mnt/bootstrap", type: "rsync"
+      dev_db.vm.provision :shell, :path => "database_provision.sh"
+      #dev_db.vm.network "forwarded_port", guest: 5432, host: 15432
+      dev_db.vm.network "private_network", ip: "192.168.33.11"
+    end
+
+end
